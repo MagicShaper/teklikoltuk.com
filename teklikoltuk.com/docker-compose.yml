@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html       # Proje dosyalarını paylaş
+      - ./db:/var/www/html/db # SQLite için kalıcı volume
+    restart: unless-stopped

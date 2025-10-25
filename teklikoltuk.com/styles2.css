@@ -1,0 +1,645 @@
+:root {
+  --hero-height: min(72vh, 720px);
+  --max-width: 1200px;
+  --accent: #6C63FF;
+  --glass: rgba(255,255,255,0.06);
+  --overlay: linear-gradient(135deg, rgba(108,99,255,0.45), rgba(0,0,0,0.25));
+  --radius: 12px;
+  --transition: 220ms cubic-bezier(.2,.9,.3,1);
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* GENEL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: linear-gradient(200deg, #2e2e35, #160948);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  backdrop-filter: blur(50px);
+  flex-direction: column;
+}
+
+.header {
+  position: fixed; /* Sayfa kaydırıldığında görünmeye devam etsin */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-image: url('4k.jpg');
+  
+  border-bottom: 2px solid rgba(255,255,255,0.06);
+  z-index: 1000;
+  
+}
+.header a{
+  color:#fff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.header a:hover{
+  transform: translateY(-2px);
+  
+}
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  width: 100%; 
+  margin: 0 auto;
+  padding: 0 0; 
+  max-width: var(--max-width);
+}
+
+/* Ortadaki başlık için */
+.header__title {
+  position: relative;
+  flex: 2;
+  font-size: 120px;
+  font-weight: 100%;
+  color: #fff;
+  font-family: var(--font-sans);
+
+}
+.header__title a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block; /* transform çalışsın diye */
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+.header__title a:hover {
+  transform: translateY(-5px);
+  color: var(--accent);
+}
+/* Sol taraf boşluk (örneğin logo alanı için) */
+.header__left {
+  flex: 1;
+}
+.header__logo {
+  position: relative;
+  height: 150px; /* Logo yüksekliği */
+  width: auto; /* Oranı korusun */
+  object-fit: contain; /* Görüntü taşmasın */
+  display: flex;
+  overflow: hidden;
+
+}
+
+/* Sağ köşedeki buton alanı */
+.header__right {
+  flex: 5;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* Buton stilleri */
+.header__btn {
+  padding: 3%;
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background var(--transition);
+  
+}
+
+.header__btn:hover {
+  background: #574bff;
+}
+
+
+
+
+/* LOGIN FORM BÖLÜMÜ */
+.login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 160px;
+  padding: 40px 16px;
+}
+
+.login-card {
+  background: var(--glass);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  max-width: 420px;
+  width: 100%;
+  padding: 36px 28px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  animation: fadeIn 0.6s ease;
+}
+
+.login-card h1 {
+  font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.login-card p {
+  font-size: 1rem;
+  color: #bbb;
+  margin-bottom: 28px;
+}
+
+.login-card input[type="text"],
+.login-card input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.login-card input[type="text"]:focus,
+.login-card input[type="password"]:focus {
+  background: rgba(255,255,255,0.2);
+}
+
+.login-card input[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.login-card input[type="submit"]:hover {
+  filter: brightness(1.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* FOOTER */
+.site-footer {
+  position: relative;
+  background-image:url('2k.jpg'); 
+  background-position:bottom;
+  font-family: var(--font-sans);
+  padding-top: 2%;
+  padding-bottom: 1%;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: auto;
+}
+
+.footer-container {
+  backdrop-filter:blur(20px); 
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.footer-brand { flex: 1 1 280px; }
+.footer-logo {
+  font-size: 1.8rem;
+  color: #fff;
+  margin: 0 0 8px;
+}
+
+.footer-harf {
+  margin-bottom: -10px;
+  width: 50px;
+  height: 50px;
+}
+
+.footer-desc {
+  color: #aaa;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer-links { flex: 1 1 160px; }
+.footer-links h3,
+.footer-social h3 {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li { margin-bottom: 8px; }
+
+.footer-links a {
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover { color: var(--accent); }
+
+.footer-social { flex: 1 1 200px; }
+
+.social-icons {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.social-icons a {
+  display: inline-flex;
+  color: #bbb;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social-icons a:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 40px;
+  padding-top: 18px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .header__container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .login-card {
+    padding: 28px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header__title {
+    font-size: 1.4rem;
+  }
+  .login-card {
+    margin-top: 140px;
+  }
+}
+
+/* Travlers */
+.trip-search {
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgba(108,99,255,0.08), rgba(0,0,0,0.3));
+  padding-top: 120px; /* Header yüksekliğine göre */
+  color: #fff;
+  font-family: var(--font-sans);
+}
+
+.trip-search__container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 5% 5%;
+}
+
+.trip-search__title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 32px;
+  color: #fff;
+}
+/* Select kutuları için stil */
+.trip-search__fields select {
+  padding: 10px 12px;
+  border: none;
+  border-radius: var(--radius);
+  outline: none;
+  background: rgba(255, 255, 255, 0.1); /* inputlarla aynı arka plan */
+  color: #fff;
+  font-size: 1rem;
+  transition: all var(--transition);
+  min-width: 200px;
+  appearance: none; /* default ok simgesini gizle */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+/* Hover ve focus efekti */
+.trip-search__fields select:hover,
+.trip-search__fields select:focus {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.3);
+  color: #fff;
+}
+
+/* Açılır menü içindeki optionlar */
+.trip-search__fields select option {
+  color: #000; /* açılır listede okunaklı */
+  background: #fff;
+}
+
+/* Modern ok simgesi eklemek istersen */
+.trip-search__fields select {
+  background-image: url('../icons/arrow-down.svg'); /* kendi ikonunu koyabilirsin */
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 35px;
+}
+
+.trip-search__form {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.trip-search__fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-group input {
+  padding: 10px 12px;
+  border: none;
+  border-radius: var(--radius);
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.search-btn {
+  padding: 12px 24px;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition);
+  align-self: center;
+}
+
+.search-btn:hover {
+  background: #574bff;
+}
+
+/* Sefer listesi */
+.trip-results {
+  margin-top: 40px;
+}
+
+.trip-results h3 {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+}
+
+.trip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ------------------- Sefer Kartı ------------------- */
+.trip-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: rgba(255,255,255,0.05);
+  border-radius: var(--radius);
+  padding: 16px 24px;
+  transition: background 0.3s;
+}
+
+.trip-card:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.trip-info {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.trip-info > div {
+  background: rgba(255,255,255,0.05);
+  padding: 10px 14px;
+  border-radius: 8px;
+  min-width: 140px;
+  text-align: center;
+}
+
+.trip-time {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.trip-time small {
+  display: block;
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-top: 3px;
+}
+
+.trip-price {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+}
+
+.trip-price span {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.buy-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: #574bff;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s;
+}
+
+.buy-btn:hover {
+  background: #6b5fff;
+}
+
+/* -------------------- Koltuk Seçimi -------------------- */
+.seat-selection {
+  margin-top: 12px;
+}
+
+.seat-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.aisle-row {
+  height: 12px;
+}
+
+.seat {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: #888;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.seat.booked {
+  background: #ff4b5c;
+  cursor: not-allowed;
+}
+
+.seat.selected {
+  background: #574bff;
+}
+
+.confirm-seat {
+  margin-top: 8px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: #00b894;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.confirm-seat:hover {
+  background: #00d38b;
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .trip-search__fields {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .trip-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+.row {
+  display: flex;
+  gap: 8px;
+}
+.seat-selection {
+  margin-top: 12px;
+  display: none; /* JS toggle ile gösterilecek */
+}
+
+.seat-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.aisle-row {
+  height: 12px; /* Koridor boşluğu */
+}
+
+/* Koltuklar */
+.seat {
+  width: 44px;
+  height: 44px;
+  background-color: #444;
+  border: 1px solid #666;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.15s, background-color 0.2s;
+}
+
+.seat:hover {
+  transform: scale(1.1);
+}
+
+.seat.selected {
+  background-color: #4caf50; /* Seçilen koltuk yeşil */
+}
+
+.seat.booked {
+  background-color: #999; /* Dolu koltuk gri */
+  cursor: not-allowed;
+  color: #fff;
+}
+
+/* Seçilen koltuk yazısı ve onay butonu */
+.selected-seat {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: #574bff;
+}
+
+.confirm-seat {
+  margin-top: 6px;
+  padding: 6px 14px;
+  border: none;
+  background-color: #574bff;
+  color: #fff;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.confirm-seat:hover {
+  background-color: #574bff;
+}
